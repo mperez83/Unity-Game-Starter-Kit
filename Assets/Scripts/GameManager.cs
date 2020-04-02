@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     float screenLeftEdge;
     float screenRightEdge;
 
+    bool secretActive;
+
 
 
     void Awake()
@@ -53,5 +55,15 @@ public class GameManager : MonoBehaviour
         Vector2 pos = new Vector2(transform.position.x, transform.position.y);
         if (pos.y > screenTopEdge || pos.y < screenBottomEdge || pos.x < screenLeftEdge || pos.x > screenRightEdge) return true;
         else return false;
+    }
+
+    public void ActivateSecret(AudioClip secretMusicToPlay)
+    {
+        if (!secretActive)
+        {
+            secretActive = true;
+            musicAudioSource.clip = secretMusicToPlay;
+            musicAudioSource.Play();
+        }
     }
 }
